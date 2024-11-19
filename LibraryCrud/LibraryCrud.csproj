@@ -20,10 +20,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Api\Controllers\" />
-    <Folder Include="Application\UnitOfWork\" />
-    <Folder Include="Application\Repository\" />
-    <Folder Include="Domain\Interfaces\" />
     <Folder Include="Persistence\Data\Migrations\" />
   </ItemGroup>
 

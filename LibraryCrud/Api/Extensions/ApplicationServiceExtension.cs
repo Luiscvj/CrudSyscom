@@ -1,4 +1,6 @@
 ﻿using AspNetCoreRateLimit;
+using LibraryCrud.Application.UnitOfWork;
+using LibraryCrud.Domain.Interfaces;
 
 namespace LibraryCrud.Api.Extensions
 {
@@ -6,6 +8,7 @@ namespace LibraryCrud.Api.Extensions
     {
         public static void ConfigureCors(this IServiceCollection services)
         {
+            //se configura los cors de mi api para mantener la seguridad de la api
             services.AddCors(options =>
             {
                 options.AddPolicy("CorsPolicy", builder =>
@@ -28,6 +31,15 @@ namespace LibraryCrud.Api.Extensions
 
         }
 
+
+        public static void AddApplicationServices(this IServiceCollection services)
+        {
+            //
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+        
+
+        }
+        //Se configura el limite de veces que se puede llamar un endpoint
         public static void ConfigureRateLimit(this IServiceCollection services)
         {
             services.AddMemoryCache();
