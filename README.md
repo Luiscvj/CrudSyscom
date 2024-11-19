@@ -79,6 +79,11 @@ builder.Services.AddControllers();
 Endpoints
 Todos los endpoints están documentados y son accesibles a través del frontend. Puedes probarlos fácilmente desde la interfaz proporcionada.
 
+
+**Nota importante**: Al ejecutarlo verificar que se ejecuta con http para no generar errores
+
+
+
 Tecnologías Utilizadas
 .NET 8
 Entity Framework Core 9
