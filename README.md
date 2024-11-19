@@ -23,32 +23,39 @@ Esta capa contiene las entidades del dominio que representan los datos como obje
 
 Ejemplo de una entidad:
 
-csharp
-Copiar código
-public class Book
-{
-    public int BookId { get; set; }
-    public string BookTitle { get; set; }
-    public DateTime PublicationDate { get; set; }
-    public ICollection<Author> Authors { get; set; }
-}
+
+ public class Book
+ {
+     [Key]//Uso de DataAnotations
+     public int BookId { get; set; }
+     public string BookTitle { get; set; }
+     public DateTime PublicationDate { get; set; }
+     public ICollection<Genre>? Genres { get; set; } = new List<Genre>();
+     public ICollection<Author> Authors { get; set; } = new List<Author>();
+
+
+ }
 2. Persistence
 Esta capa es responsable de gestionar la conexión con la base de datos. Incluye la configuración de Entity Framework Core y el contexto de datos, LibraryCrudContext, que permite manipular los datos directamente desde el código.
 
 Ejemplo de la configuración de LibraryCrudContext:
 
-csharp
-Copiar código
-public class LibraryCrudContext : DbContext
-{
-    public DbSet<Book> Books { get; set; }
-    public DbSet<Author> Authors { get; set; }
 
-    protected override void OnModelCreating(ModelBuilder modelBuilder)
-    {
-        // Configuración de las entidades
+public class LibraryCrudContext : DbContextEsta clase es la que me permite  comunicarme con mi motor de base de datos y manipular los datos
+{
+    public LibraryCrudContext(DbContextOptions options) : base(options)
+    {    
+    
     }
-}
+    
+    public DbSet<Author> Authors { get; set; }
+    public DbSet<Book> Books { get; set; }
+    public DbSet<BookAuthor>  BookAuthors{ get; set; } 
+    public DbSet<BookGenre>  BookGenres{ get; set; }
+    public DbSet<Genre> Genres { get; set; }
+
+
+    
 3. Application
 En esta capa se implementan los patrones Repositorio y Unidad de Trabajo, los cuales son fundamentales para la manipulación de datos:
 
@@ -67,17 +74,13 @@ Inyección de dependencias: Se registran los servicios necesarios para el funcio
 Controladores: Exponen los endpoints que interactúan con la aplicación.
 Ejemplo de configuración en Program.cs:
 
-csharp
-Copiar código
+
+
 builder.Services.AddDbContext<LibraryCrudContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 builder.Services.AddControllers();
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy("AllowAll", policy => 
-        policy.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
-});
+
 Endpoints
 Todos los endpoints están documentados y son accesibles a través del frontend. Puedes probarlos fácilmente desde la interfaz proporcionada.
 
