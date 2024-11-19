@@ -44,16 +44,11 @@ Ejemplo de la configuración de LibraryCrudContext:
 public class LibraryCrudContext : DbContextEsta clase es la que me permite  comunicarme con mi motor de base de datos y manipular los datos
 {
     public LibraryCrudContext(DbContextOptions options) : base(options)
-    {    
+    {  }  
     
-    }
     
-    public DbSet<Author> Authors { get; set; }
-    public DbSet<Book> Books { get; set; }
-    public DbSet<BookAuthor>  BookAuthors{ get; set; } 
-    public DbSet<BookGenre>  BookGenres{ get; set; }
-    public DbSet<Genre> Genres { get; set; }
-
+    
+   
 
     
 3. Application
