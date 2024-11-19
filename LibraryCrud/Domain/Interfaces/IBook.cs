@@ -9,5 +9,7 @@ namespace LibraryCrud.Domain.Interfaces
 
         Task<bool> verifyAndAddInexistingAuthor(Book book);
         Task<bool> UpdateBook(Book book);
+
+        Task<List<Book>> GetAllBooksLists();
     }
 }

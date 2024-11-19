@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LibraryCrud.Persistence.Data.Migrations
 {
     [DbContext(typeof(LibraryCrudContext))]
-    [Migration("20241119005404_Initial Migrate")]
+    [Migration("20241119183118_Initial Migrate")]
     partial class InitialMigrate
     {
         /// <inheritdoc />
@@ -51,6 +51,30 @@ namespace LibraryCrud.Persistence.Data.Migrations
                             AuthorId = 1,
                             AuthorName = "Gabriel Garcia Marquez",
                             Birth = new DateTime(1927, 3, 6, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            AuthorId = 2,
+                            AuthorName = "Isabel Allende",
+                            Birth = new DateTime(1942, 8, 2, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            AuthorId = 3,
+                            AuthorName = "Jorge Luis Borges",
+                            Birth = new DateTime(1899, 8, 24, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            AuthorId = 4,
+                            AuthorName = "Mario Vargas Llosa",
+                            Birth = new DateTime(1936, 3, 28, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            AuthorId = 5,
+                            AuthorName = "Octavio Paz",
+                            Birth = new DateTime(1914, 3, 31, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         });
                 });
 
@@ -80,6 +104,60 @@ namespace LibraryCrud.Persistence.Data.Migrations
                             BookId = 1,
                             BookTitle = "Cien Años de Soledad",
                             PublicationDate = new DateTime(1967, 5, 10, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            BookId = 2,
+                            BookTitle = "El Amor en los Tiempos del Cólera",
+                            PublicationDate = new DateTime(1985, 9, 15, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            BookId = 3,
+                            BookTitle = "La Casa de los Espíritus",
+                            PublicationDate = new DateTime(1982, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            BookId = 4,
+                            BookTitle = "De Amor y de Sombra",
+                            PublicationDate = new DateTime(1984, 6, 12, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            BookId = 5,
+                            BookTitle = "Ficciones",
+                            PublicationDate = new DateTime(1944, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            BookId = 6,
+                            BookTitle = "El Aleph",
+                            PublicationDate = new DateTime(1949, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            BookId = 7,
+                            BookTitle = "La Ciudad y los Perros",
+                            PublicationDate = new DateTime(1963, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            BookId = 8,
+                            BookTitle = "La Fiesta del Chivo",
+                            PublicationDate = new DateTime(2000, 11, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            BookId = 9,
+                            BookTitle = "El Laberinto de la Soledad",
+                            PublicationDate = new DateTime(1950, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            BookId = 10,
+                            BookTitle = "Piedra de Sol",
+                            PublicationDate = new DateTime(1957, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         });
                 });
 
@@ -102,6 +180,51 @@ namespace LibraryCrud.Persistence.Data.Migrations
                         {
                             AuthorId = 1,
                             BookId = 1
+                        },
+                        new
+                        {
+                            AuthorId = 1,
+                            BookId = 2
+                        },
+                        new
+                        {
+                            AuthorId = 2,
+                            BookId = 3
+                        },
+                        new
+                        {
+                            AuthorId = 2,
+                            BookId = 4
+                        },
+                        new
+                        {
+                            AuthorId = 3,
+                            BookId = 5
+                        },
+                        new
+                        {
+                            AuthorId = 3,
+                            BookId = 6
+                        },
+                        new
+                        {
+                            AuthorId = 4,
+                            BookId = 7
+                        },
+                        new
+                        {
+                            AuthorId = 4,
+                            BookId = 8
+                        },
+                        new
+                        {
+                            AuthorId = 5,
+                            BookId = 9
+                        },
+                        new
+                        {
+                            AuthorId = 5,
+                            BookId = 10
                         });
                 });
 
@@ -128,7 +251,77 @@ namespace LibraryCrud.Persistence.Data.Migrations
                         new
                         {
                             BookId = 1,
+                            GenreId = 7
+                        },
+                        new
+                        {
+                            BookId = 2,
+                            GenreId = 1
+                        },
+                        new
+                        {
+                            BookId = 2,
+                            GenreId = 7
+                        },
+                        new
+                        {
+                            BookId = 3,
+                            GenreId = 1
+                        },
+                        new
+                        {
+                            BookId = 3,
+                            GenreId = 7
+                        },
+                        new
+                        {
+                            BookId = 4,
+                            GenreId = 1
+                        },
+                        new
+                        {
+                            BookId = 4,
+                            GenreId = 7
+                        },
+                        new
+                        {
+                            BookId = 5,
+                            GenreId = 3
+                        },
+                        new
+                        {
+                            BookId = 5,
                             GenreId = 2
+                        },
+                        new
+                        {
+                            BookId = 6,
+                            GenreId = 3
+                        },
+                        new
+                        {
+                            BookId = 6,
+                            GenreId = 2
+                        },
+                        new
+                        {
+                            BookId = 7,
+                            GenreId = 7
+                        },
+                        new
+                        {
+                            BookId = 8,
+                            GenreId = 7
+                        },
+                        new
+                        {
+                            BookId = 9,
+                            GenreId = 4
+                        },
+                        new
+                        {
+                            BookId = 10,
+                            GenreId = 4
                         });
                 });
 

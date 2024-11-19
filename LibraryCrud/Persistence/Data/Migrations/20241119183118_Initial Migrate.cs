@@ -105,12 +105,31 @@ namespace LibraryCrud.Persistence.Data.Migrations
             migrationBuilder.InsertData(
                 table: "author",
                 columns: new[] { "AuthorId", "AuthorName", "Birth" },
-                values: new object[] { 1, "Gabriel Garcia Marquez", new DateTime(1927, 3, 6, 0, 0, 0, 0, DateTimeKind.Unspecified) });
+                values: new object[,]
+                {
+                    { 1, "Gabriel Garcia Marquez", new DateTime(1927, 3, 6, 0, 0, 0, 0, DateTimeKind.Unspecified) },
+                    { 2, "Isabel Allende", new DateTime(1942, 8, 2, 0, 0, 0, 0, DateTimeKind.Unspecified) },
+                    { 3, "Jorge Luis Borges", new DateTime(1899, 8, 24, 0, 0, 0, 0, DateTimeKind.Unspecified) },
+                    { 4, "Mario Vargas Llosa", new DateTime(1936, 3, 28, 0, 0, 0, 0, DateTimeKind.Unspecified) },
+                    { 5, "Octavio Paz", new DateTime(1914, 3, 31, 0, 0, 0, 0, DateTimeKind.Unspecified) }
+                });
 
             migrationBuilder.InsertData(
                 table: "book",
                 columns: new[] { "BookId", "BookTitle", "PublicationDate" },
-                values: new object[] { 1, "Cien Años de Soledad", new DateTime(1967, 5, 10, 0, 0, 0, 0, DateTimeKind.Unspecified) });
+                values: new object[,]
+                {
+                    { 1, "Cien Años de Soledad", new DateTime(1967, 5, 10, 0, 0, 0, 0, DateTimeKind.Unspecified) },
+                    { 2, "El Amor en los Tiempos del Cólera", new DateTime(1985, 9, 15, 0, 0, 0, 0, DateTimeKind.Unspecified) },
+                    { 3, "La Casa de los Espíritus", new DateTime(1982, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
+                    { 4, "De Amor y de Sombra", new DateTime(1984, 6, 12, 0, 0, 0, 0, DateTimeKind.Unspecified) },
+                    { 5, "Ficciones", new DateTime(1944, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
+                    { 6, "El Aleph", new DateTime(1949, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
+                    { 7, "La Ciudad y los Perros", new DateTime(1963, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
+                    { 8, "La Fiesta del Chivo", new DateTime(2000, 11, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
+                    { 9, "El Laberinto de la Soledad", new DateTime(1950, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
+                    { 10, "Piedra de Sol", new DateTime(1957, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) }
+                });
 
             migrationBuilder.InsertData(
                 table: "genre",
@@ -129,7 +148,19 @@ namespace LibraryCrud.Persistence.Data.Migrations
             migrationBuilder.InsertData(
                 table: "BookAuthors",
                 columns: new[] { "AuthorId", "BookId" },
-                values: new object[] { 1, 1 });
+                values: new object[,]
+                {
+                    { 1, 1 },
+                    { 1, 2 },
+                    { 2, 3 },
+                    { 2, 4 },
+                    { 3, 5 },
+                    { 3, 6 },
+                    { 4, 7 },
+                    { 4, 8 },
+                    { 5, 9 },
+                    { 5, 10 }
+                });
 
             migrationBuilder.InsertData(
                 table: "BookGenres",
@@ -137,7 +168,21 @@ namespace LibraryCrud.Persistence.Data.Migrations
                 values: new object[,]
                 {
                     { 1, 1 },
-                    { 1, 2 }
+                    { 1, 7 },
+                    { 2, 1 },
+                    { 2, 7 },
+                    { 3, 1 },
+                    { 3, 7 },
+                    { 4, 1 },
+                    { 4, 7 },
+                    { 5, 2 },
+                    { 5, 3 },
+                    { 6, 2 },
+                    { 6, 3 },
+                    { 7, 7 },
+                    { 8, 7 },
+                    { 9, 4 },
+                    { 10, 4 }
                 });
 
             migrationBuilder.CreateIndex(

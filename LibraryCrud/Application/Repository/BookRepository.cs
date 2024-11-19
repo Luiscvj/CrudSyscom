@@ -12,6 +12,11 @@ namespace LibraryCrud.Application.Repository
 
         }
 
+        public async  Task<List<Book>> GetAllBooksLists()
+        {
+            return  await _context.Books.Include(x => x.Authors).Include(x => x.Genres).ToListAsync();
+        }
+
         public async Task<List<Book>> GetBookByAuthor(string authorName)
         {
             var book = await _context.Books.Where(c => c.Authors.Any(x => x.AuthorName.Contains(authorName))).Include(x => x.Authors).Include(x => x.Genres).ToListAsync();

@@ -102,7 +102,32 @@ namespace LibraryCrud.Api.Controllers
 
         }
 
+        [HttpGet("GetAllBooksAndLists")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
 
+        public async Task<ActionResult<List<BookDto>>> GetAllBooksAndLists()
+        {
+            try
+            {
+                var books = await _unitOfWork.Books.GetAllBooksLists();
+                if (books != null)
+                {
+                    return Ok(_mapper.Map<List<BookDto>>(books));
+                }
+                return NoContent();
+
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+
+            }
+
+        }
         [HttpPost("AddBook")]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -115,8 +140,9 @@ namespace LibraryCrud.Api.Controllers
             try
             {
                 if (model != null)
-                {
+                {   
                     Book book = _mapper.Map<Book>(model);
+                    book.PublicationDate = DateTime.Now;
                     bool isChange = await _unitOfWork.Books.verifyAndAddInexistingAuthor(book);
 
                     if (isChange)
@@ -143,13 +169,13 @@ namespace LibraryCrud.Api.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
 
-        public async Task<ActionResult> UpdateBook([FromBody] AddBookDto book, int id)
+        public async Task<ActionResult> UpdateBook([FromBody] AddBookDto book)
         {
             try
             {
-                if (book != null && id > 0)
+                if (book != null)
                 {
-                    var existingBook = await _unitOfWork.Books.GetById(id);
+                    var existingBook = await _unitOfWork.Books.GetById(book.BookId);
                     if (existingBook != null)
                     {
                         Book bookToUpdate = _mapper.Map<Book>(book);
