@@ -23,11 +23,8 @@
     <Folder Include="Api\Controllers\" />
     <Folder Include="Application\UnitOfWork\" />
     <Folder Include="Application\Repository\" />
-    <Folder Include="Domain\Entities\" />
     <Folder Include="Domain\Interfaces\" />
-    <Folder Include="Persistence\Data\Configuration\" />
     <Folder Include="Persistence\Data\Migrations\" />
-    <Folder Include="Persistence\Seed\" />
   </ItemGroup>
 
 </Project>

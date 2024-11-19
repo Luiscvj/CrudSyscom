@@ -1,3 +1,4 @@
+using LibraryCrud.Api.Extensions;
 using LibraryCrud.Persistence;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -15,7 +16,9 @@ builder.Services.AddDbContext<LibraryCrudContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
-
+//Se añaden los metodos de extension
+builder.Services.ConfigureCors();
+builder.Services.ConfigureRateLimit();
 
 
 var app = builder.Build();
@@ -28,7 +31,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
+app.UseCors("CorsPolicy");
 app.UseAuthorization();
 
 app.MapControllers();
